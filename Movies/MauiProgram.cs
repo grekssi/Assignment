@@ -18,7 +18,7 @@ public static class MauiProgram
 			})
             .ConfigureMauiHandlers(handlers =>
             {
-                handlers.AddHandler<RatingView, RatingViewHandler>();
+                handlers.AddHandler<RatingView, RatingViewHandlerAndroid>();
             }); ;
 
 #if DEBUG

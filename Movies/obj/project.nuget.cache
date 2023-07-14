@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QBHvGMBFkE6iCV6XAoSjlgJhLVDDSrefudq3Boh4wXjME4KRHlY2LXcZbZ9nxrUJaQLgPsBuwn5anUD7jZ7rJA==",
+  "dgSpecHash": "mIYsJ6KtWH/gNhvGaGnffwAm7TcqjSyeUHNCVt+nAe1kfIcYCVqe0qq4nDAW38jTGj9z2PLHYLr67nnWhPw8nw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\Movies.csproj",
+  "projectFilePath": "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\Movies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BedrosGarabedyan\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\BedrosGarabedyan\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",

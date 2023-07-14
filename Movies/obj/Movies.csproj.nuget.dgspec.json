@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\Movies.csproj": {}
+    "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\Movies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\Movies.csproj": {
+    "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\Movies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\Movies.csproj",
+        "projectUniqueName": "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\Movies.csproj",
         "projectName": "Movies",
-        "projectPath": "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\Movies.csproj",
+        "projectPath": "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\Movies.csproj",
         "packagesPath": "C:\\Users\\BedrosGarabedyan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BedrosGarabedyan\\source\\repos\\Movies\\Movies\\obj\\",
+        "outputPath": "C:\\Users\\BedrosGarabedyan\\Desktop\\Maui\\Assignment\\Movies\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

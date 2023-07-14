@@ -27,16 +27,43 @@ namespace Movies.ViewModels
         {
             Movies = new ObservableCollection<Movie>
             {
+                //to showcase if connection is not available, or another problem occurs
                 new Movie { Title = "Inception", Rating = 3, Image = ImageSource.FromFile("inception.jpg"), Color = Android.Graphics.Color.Red },
             };
 
-            GetMovies();
+            PullMovies(); //polling of movies every 5 seconds and updating the collection
         }
 
-        public async void GetMovies()
+        public async void PullMovies()
         {
-            var movies = await FirebaseConfig.GetMovies();
-            Movies = new ObservableCollection<Movie>(movies.Select(x => x.ToModel()));
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    var newMovies = await FirebaseConfig.GetMovies();
+                    var newMovieModels = newMovies.Select(x => x.ToModel()).ToList();
+
+                    // Remove movies that are not in the new list
+                    foreach (var movie in Movies.ToList())
+                    {
+                        if (!newMovieModels.Any(m => m.Id == movie.Id))
+                        {
+                            Movies.Remove(movie);
+                        }
+                    }
+
+                    // Add movies that are not in the current list
+                    foreach (var movieModel in newMovieModels)
+                    {
+                        if (!Movies.Any(m => m.Id == movieModel.Id))
+                        {
+                            Movies.Add(movieModel);
+                        }
+                    }
+
+                    await Task.Delay(5000);
+                }
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

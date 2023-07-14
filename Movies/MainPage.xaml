@@ -11,10 +11,6 @@
         <binding:MoviesViewModel />
     </ContentPage.BindingContext>
 
-    <!--<StackLayout>
-        <Label Text="{Binding Value}" />
-        <local:RatingView Value="5" Color="Red" />
-    </StackLayout>-->
     <CollectionView ItemsSource="{Binding Movies}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
