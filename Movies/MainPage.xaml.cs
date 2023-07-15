@@ -1,18 +1,20 @@
-﻿using AndroidX.Lifecycle;
+﻿using Movies.Controls;
 using Movies.ViewModels;
 
 namespace Movies;
 
 public partial class MainPage : ContentPage
 {
-    int count = 0;
     public MainPage()
     {
         InitializeComponent();
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
     {
+        var newStep = Math.Round(e.NewValue);
+
+        ((Slider)sender).Value = newStep;
     }
 }
 

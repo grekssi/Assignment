@@ -16,12 +16,54 @@ namespace Movies.Controls
                 typeof(RatingView),
                 default(int));
 
+        public static readonly BindableProperty ElementWidthProperty =
+           BindableProperty.Create(
+               nameof(ElementWidth),
+               typeof(double),
+               typeof(RatingView),
+               default(double));
+
         public static readonly BindableProperty ColorProperty = 
             BindableProperty.Create(
                 nameof(Color),
-                typeof(Android.Graphics.Color), 
+                typeof(string), 
                 typeof(RatingView), 
-                default(Android.Graphics.Color));
+                default(string));
+
+        public static readonly BindableProperty ShapeProperty =
+           BindableProperty.Create(
+               nameof(Shape),
+               typeof(Shape),
+               typeof(RatingView),
+               default(Shape));
+
+        public static readonly BindableProperty TotalStarsProperty =
+           BindableProperty.Create(
+               nameof(TotalStars),
+               typeof(int),
+               typeof(RatingView),
+               default(int));
+
+        public Shape Shape
+        {
+            get { return (Shape)GetValue(ShapeProperty); }
+            set 
+            { 
+                SetValue(ShapeProperty, value);
+            }
+        }
+
+        public double ElementWidth
+        {
+            get { return (double)GetValue(ElementWidthProperty); }
+            set { SetValue(ElementWidthProperty, value); }
+        }
+
+        public int TotalStars
+        {
+            get { return (int)GetValue(TotalStarsProperty); }
+            set { SetValue(TotalStarsProperty, value); }
+        }
 
         public int Value
         {
@@ -29,9 +71,9 @@ namespace Movies.Controls
             set { SetValue(ValueProperty, value); }
         }
 
-        public Android.Graphics.Color Color
+        public string Color
         {
-            get { return (Android.Graphics.Color)GetValue(ColorProperty); }
+            get { return (string)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
     }

@@ -1,10 +1,14 @@
-﻿using Android.Content;
+﻿#if ANDROID
+using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Views;
+using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Content;
 using AndroidX.Core.Graphics.Drawable;
+using AndroidX.RecyclerView.Widget;
+using Movies.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +17,22 @@ using System.Threading.Tasks;
 
 namespace Movies.NativeViews
 {
-    public class NativeRatingView : Android.Views.View
+    public class NativeRatingView : ConstraintLayout
     {
         private int _value;
-        private Drawable _starEmpty;
-        private Drawable _starFull;
-        private Android.Graphics.Color _color;
+        private int _currentWidth;
+        private int _totalNumberOfStars = 5;
+        private StarAdapter starAdapter;
+        RecyclerView myRecyclerView;
+
+        public int TotalNumberOfStars
+        {
+            get => _totalNumberOfStars;
+            set
+            {
+                _totalNumberOfStars = value;
+            }
+        }
 
         public int Value
         {
@@ -29,23 +43,51 @@ namespace Movies.NativeViews
             }
         }
 
-        public Android.Graphics.Color Color
+        public int CurrentWidth
         {
-            get => _color;
+            get => _currentWidth;
             set
             {
-                _color = value;
+                _currentWidth = value;
             }
         }
 
-        public void SetColor(Android.Graphics.Color color)
+        public void SetTotalNumberOfStars(int stars)
         {
-            Color = color;
+            if (starAdapter != null)
+            {
+                starAdapter.TotalNumberOfStars = stars;
+                starAdapter.NotifyDataSetChanged();
+            }
+        }
 
-            var colorStateList = ColorStateList.ValueOf(color);
+        public void SetCurrentWidth(double width)
+        {
+            if (starAdapter != null)
+            {
+                starAdapter.StarsSize = width;
+                starAdapter.NotifyDataSetChanged();
+            }
+        }
 
-            DrawableCompat.SetTintList(_starEmpty, colorStateList);
-            DrawableCompat.SetTintList(_starFull, colorStateList);
+        public void SetShape(Shape shape, string color)
+        {
+            if (starAdapter != null)
+            {
+                starAdapter.Shape = shape;
+                starAdapter.NotifyDataSetChanged();
+            }
+
+            Invalidate();
+        }
+
+        public void SetColor(string color)
+        {
+            if (starAdapter != null)
+            {
+                this.starAdapter.Color = color;
+                starAdapter.NotifyDataSetChanged();
+            }
 
             Invalidate();
         }
@@ -53,66 +95,34 @@ namespace Movies.NativeViews
         public void SetValue(int value)
         {
             Value = value;
+            if (starAdapter != null)
+            {
+                starAdapter.Value = Value;
+                starAdapter.NotifyDataSetChanged();
+            }
             Invalidate();
         }
 
         public NativeRatingView(Context context) : base(context)
         {
-            _starEmpty = ContextCompat.GetDrawable(context, Resource.Drawable.star_unfilled_vector);
-            _starFull = ContextCompat.GetDrawable(context, Resource.Drawable.star_filled_vector);
-        }
+            Inflate(context, Resource.Drawable.rating_layout, this);
 
-        protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
-        {
-            int heightSize = MeasureSpec.GetSize(heightMeasureSpec);
+            LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
 
-            SetMeasuredDimension(widthMeasureSpec, heightSize);
-        }
+            myRecyclerView = FindViewById<RecyclerView>(Resource.Id.my_recycler_view);
+            myRecyclerView.SetLayoutManager(new UnscrollableLinearLayoutManager(context, LinearLayoutManager.Horizontal, false));
 
-        protected override void OnDraw(Canvas canvas)
-        {
-            base.OnDraw(canvas);
-
-            int starWidth = 150;
-            int starHeight = 150;
-
-            int totalStarsWidth = 5 * starWidth + 4 * 10; 
-
-            int leftStart = (Width - totalStarsWidth) / 2;
-            int topStart = (Height - starHeight) / 2;
-
-            for (int i = 0; i < 5; i++)
+            List<RatingElement> stars = new List<RatingElement>();
+            for (int i = 0; i < TotalNumberOfStars; i++)
             {
-                Drawable star = i < _value ? _starFull : _starEmpty;
-
-                int left = leftStart + i * (starWidth + 10);
-
-                star.SetBounds(left, topStart, left + starWidth, topStart + starHeight);
-                star.Draw(canvas);
-            }
-        }
-
-        public override bool OnTouchEvent(MotionEvent e)
-        {
-            if (e.Action == MotionEventActions.Up)
-            {
-                int starWidth = 150;
-                int totalStarsWidth = 5 * starWidth + 4 * 10; 
-
-                int leftStart = (Width - totalStarsWidth) / 2;
-
-                int index = (int)((e.GetX() - leftStart) / (starWidth + 10));
-
-                if (index >= 0 && index < 5)
-                {
-                    _value = index + 1;
-                }
-
-                Invalidate();
+                stars.Add(new RatingElement());
             }
 
-            return true;
-        }
+            starAdapter = new StarAdapter(stars);
+            starAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
+            myRecyclerView.SetAdapter(starAdapter);
+        }
     }
 }
+#endif

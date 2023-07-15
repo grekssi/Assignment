@@ -1,4 +1,5 @@
-﻿using Movies.Models;
+﻿using Movies.Controls;
+using Movies.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,11 +8,53 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Movies.ViewModels
 {
     public class MoviesViewModel : INotifyPropertyChanged
     {
+        public ICommand RedCommand { get; private set; }
+        public ICommand BlueCommand { get; private set; }
+        public ICommand YellowCommand { get; private set; }
+
+
+        private Shape _shape;
+        public Shape Shape
+        {
+            get { return _shape; }
+            set
+            {
+                _shape = value;
+                OnPropertyChanged(nameof(Shape));
+            }
+        }
+
+        private int _totalStars = 5;
+        public int TotalStars
+        {
+            get { return _totalStars; }
+            set
+            {
+                _totalStars = value;
+                OnPropertyChanged(nameof(TotalStars));
+            }
+        }
+
+        private double _elementWidth = 40;
+        public double ElementWidth
+        {
+            get { return _elementWidth; }
+            set
+            {
+                if (_elementWidth != value)
+                {
+                    _elementWidth = value;
+                    OnPropertyChanged(nameof(ElementWidth)); // This line notifies the UI of the change
+                }
+            }
+        }
+
         private ObservableCollection<Movie> _movies;
         public ObservableCollection<Movie> Movies
         {
@@ -25,13 +68,36 @@ namespace Movies.ViewModels
 
         public MoviesViewModel()
         {
-            Movies = new ObservableCollection<Movie>
-            {
-                //to showcase if connection is not available, or another problem occurs
-                new Movie { Title = "Inception", Rating = 3, Image = ImageSource.FromFile("inception.jpg"), Color = Android.Graphics.Color.Red },
-            };
-
+            Movies = new ObservableCollection<Movie>();
             PullMovies(); //polling of movies every 5 seconds and updating the collection
+
+            RedCommand = new Command(OnRedClicked);
+            BlueCommand = new Command(OnBlueClicked);
+            YellowCommand = new Command(OnYellowClicked);
+        }
+
+        private void OnRedClicked()
+        {
+            foreach (var movie in Movies)
+            {
+                movie.Color = "#FF0000";
+            }
+        }
+
+        private void OnBlueClicked()
+        {
+            foreach (var movie in Movies)
+            {
+                movie.Color = "#0000FF";
+            }
+        }
+
+        private void OnYellowClicked()
+        {
+            foreach (var movie in Movies)
+            {
+                movie.Color = "#FFFF00";
+            }
         }
 
         public async void PullMovies()

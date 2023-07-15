@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Movies.Controls;
-using Movies.Handlers;
+using Movies.Platforms.Android.Handlers;
 
 namespace Movies;
 
@@ -19,6 +19,10 @@ public static class MauiProgram
             .ConfigureMauiHandlers(handlers =>
             {
                 handlers.AddHandler<RatingView, RatingViewHandlerAndroid>();
+
+#if IOS
+				handlers.AddHandler<RatingView, RatingViewHandleriOS>();
+#endif
             }); ;
 
 #if DEBUG

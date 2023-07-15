@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Handlers;
+﻿#if IOS
+using Microsoft.Maui.Handlers;
 using Movies.Controls;
 using Movies.Platforms.iOS;
 using System;
@@ -41,3 +42,4 @@ namespace Movies.Handlers
         }
     }
 }
+#endif

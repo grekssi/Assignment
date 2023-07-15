@@ -2,26 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movies.MainPage"
+             x:Name="MainMainPage"
              xmlns:local="clr-namespace:Movies.Controls"
              xmlns:binding="clr-namespace:Movies.ViewModels"
              BackgroundColor="DarkGray"
              >
-
+    
     <ContentPage.BindingContext>
         <binding:MoviesViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView ItemsSource="{Binding Movies}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Frame BorderColor="Gray" Margin="40" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
-                    <Grid BackgroundColor="LightGray">
-                        <Image Source="{Binding Image}" Aspect="AspectFill"/>
-                        <local:RatingView Value="{Binding Rating}" Color="{Binding Color}" VerticalOptions="End" HeightRequest="50" BackgroundColor="LightGray"/>
-                    </Grid>
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Adjust Size" Margin="30, 20, 20, 0"/>
+            <Slider Minimum="0" Maximum="40" Value="{Binding ElementWidth, Mode=TwoWay}" Margin="20, 20, 20, 0"/>
+            <Label Text="Adjust Color" Margin="30, 20, 20, 0"/>
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
+                <Button BackgroundColor="Red" WidthRequest="70" Text="Red" TextColor="White" Command="{Binding RedCommand}"/>
+                <Button BackgroundColor="Blue" WidthRequest="70" Text="Blue" TextColor="White" Command="{Binding BlueCommand}"/>
+                <Button BackgroundColor="Yellow" WidthRequest="70" Text="Yellow" TextColor="Black" Command="{Binding YellowCommand}"/>
+            </StackLayout>
+            <Label Text="Adjust number of stars" Margin="30, 20, 20, 0"/>
+            <Slider x:Name="MySlider" Minimum="0" Maximum="7" Value="{Binding TotalStars, Mode=TwoWay}" ValueChanged="OnSliderValueChanged" Margin="20, 20, 20, 0"/>
+            <CollectionView ItemsSource="{Binding Movies}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" Margin="40" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
+                            <Grid BackgroundColor="LightGray">
+                                <Image Source="{Binding Image}" MaximumWidthRequest="300" Aspect="AspectFill"/>
+                                <local:RatingView 
+                        Value="{Binding Rating}" 
+                        Color="{Binding Color}"
+                        TotalStars="{Binding BindingContext.TotalStars, Source={x:Reference MainMainPage}}"
+                        ElementWidth="{Binding BindingContext.ElementWidth, Source={x:Reference MainMainPage}}"
+                        Shape="{Binding BindingContext.Shape, Source={x:Reference MainMainPage}}"
+                        VerticalOptions="End" 
+                        HorizontalOptions="FillAndExpand" 
+                        HeightRequest="50" 
+                        BackgroundColor="LightGray"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

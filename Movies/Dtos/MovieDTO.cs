@@ -13,7 +13,7 @@
             return new Models.Movie()
             {
                 Id = Id,
-                Color = Android.Graphics.Color.ParseColor(this.Color),
+                Color = this.Color,
                 Title = this.Title,
                 Rating = this.Rating,
                 Image = ImageSource.FromUri(new Uri(this.Image))

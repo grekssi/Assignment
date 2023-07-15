@@ -16,7 +16,7 @@ public final class R {
 		public static final int targetPackage = 0x7f030408;
 	}
 	public static final class id {
-		public static final int nav_controller_view_tag = 0x7f080136;
+		public static final int nav_controller_view_tag = 0x7f080137;
 	}
 	public static final class styleable {
 		public static final int[] ActivityNavigator = new int[] { 0x01010003, 0x7f030002, 0x7f030148, 0x7f030149, 0x7f030408 };
