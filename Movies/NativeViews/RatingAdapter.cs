@@ -97,7 +97,7 @@ namespace Movies.NativeViews
                 case Shape.Star:
                     return isFilled ? Resource.Drawable.star_filled_vector : Resource.Drawable.star_unfilled_vector;
                 default:
-                    return 0; // Default or error value
+                    return 0;
             }
         }
 

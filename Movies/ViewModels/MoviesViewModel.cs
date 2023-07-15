@@ -50,7 +50,7 @@ namespace Movies.ViewModels
                 if (_elementWidth != value)
                 {
                     _elementWidth = value;
-                    OnPropertyChanged(nameof(ElementWidth)); // This line notifies the UI of the change
+                    OnPropertyChanged(nameof(ElementWidth)); 
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace Movies.ViewModels
         public MoviesViewModel()
         {
             Movies = new ObservableCollection<Movie>();
-            PullMovies(); //polling of movies every 5 seconds and updating the collection
+            PullMovies();
 
             RedCommand = new Command(OnRedClicked);
             BlueCommand = new Command(OnBlueClicked);

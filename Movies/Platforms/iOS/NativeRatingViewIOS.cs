@@ -85,7 +85,6 @@ namespace Movies.NativeViews
             AddSubview(myCollectionView);
             myCollectionView.TranslatesAutoresizingMaskIntoConstraints = false;
 
-            // Set constraints for myCollectionView to fill the parent view
             myCollectionView.LeadingAnchor.ConstraintEqualTo(LeadingAnchor).Active = true;
             myCollectionView.TrailingAnchor.ConstraintEqualTo(TrailingAnchor).Active = true;
             myCollectionView.TopAnchor.ConstraintEqualTo(TopAnchor).Active = true;
