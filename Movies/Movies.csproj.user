@@ -8,4 +8,8 @@
     <DefaultDevice>Pixel_6_Pro_API_31</DefaultDevice>
     <AndroidDesignerPreferredDevice>7.3in Foldable</AndroidDesignerPreferredDevice>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)'=='iOS'">
+    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
 </Project>

@@ -100,7 +100,7 @@ namespace Movies.ViewModels
             }
         }
 
-        public async void PullMovies()
+        public void PullMovies()
         {
             Task.Run(async () =>
             {

@@ -7,29 +7,32 @@
              xmlns:binding="clr-namespace:Movies.ViewModels"
              BackgroundColor="DarkGray"
              >
-    
     <ContentPage.BindingContext>
         <binding:MoviesViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
         <StackLayout>
-            <Label Text="Adjust Size" Margin="30, 20, 20, 0"/>
+            <Label Text="Adjust Size" Margin="30, 20, 0, 0"/>
             <Slider Minimum="0" Maximum="40" Value="{Binding ElementWidth, Mode=TwoWay}" Margin="20, 20, 20, 0"/>
-            <Label Text="Adjust Color" Margin="30, 20, 20, 0"/>
+            <Label Text="Adjust Color" Margin="30, 20, 0, 0"/>
             <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
-                <Button BackgroundColor="Red" WidthRequest="70" Text="Red" TextColor="White" Command="{Binding RedCommand}"/>
-                <Button BackgroundColor="Blue" WidthRequest="70" Text="Blue" TextColor="White" Command="{Binding BlueCommand}"/>
-                <Button BackgroundColor="Yellow" WidthRequest="70" Text="Yellow" TextColor="Black" Command="{Binding YellowCommand}"/>
+                <Button BackgroundColor="Red" WidthRequest="70" HeightRequest="30" Padding="0" Text="Red" TextColor="White" Command="{Binding RedCommand}"/>
+                <Button BackgroundColor="Blue" WidthRequest="70" HeightRequest="30" Padding="0" Text="Blue" TextColor="White" Command="{Binding BlueCommand}"/>
+                <Button BackgroundColor="Yellow" WidthRequest="70" HeightRequest="30" Padding="0" Text="Yellow" TextColor="Black" Command="{Binding YellowCommand}"/>
             </StackLayout>
-            <Label Text="Adjust number of stars" Margin="30, 20, 20, 0"/>
+            <Label Text="Adjust number of stars" Margin="30, 20, 0, 0"/>
             <Slider x:Name="MySlider" Minimum="0" Maximum="7" Value="{Binding TotalStars, Mode=TwoWay}" ValueChanged="OnSliderValueChanged" Margin="20, 20, 20, 0"/>
-            <CollectionView ItemsSource="{Binding Movies}">
+            <CollectionView ItemsSource="{Binding Movies}" WidthRequest="300" Margin="0, 20, 0, 0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="Gray" Margin="40" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
-                            <Grid BackgroundColor="LightGray">
-                                <Image Source="{Binding Image}" MaximumWidthRequest="300" Aspect="AspectFill"/>
+                        <Frame BorderColor="Gray" Margin="40, 0, 40, 0" WidthRequest="300" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
+                            <Grid BackgroundColor="LightGray"  WidthRequest="300">
+                                <Image Source="{Binding Image}" WidthRequest="300" Aspect="AspectFill"/>
                                 <local:RatingView 
                         Value="{Binding Rating}" 
                         Color="{Binding Color}"

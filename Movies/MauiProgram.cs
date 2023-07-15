@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Movies.Controls;
 #if IOS
-using Movies.Platforms.iOS.Handlers;
+//using Movies.Platforms.iOS.Handlers;
 #endif
 #if ANDROID
 using Movies.Platforms.Android.Handlers;
@@ -28,7 +28,7 @@ public static class MauiProgram
 #endif
 
 #if IOS
-				handlers.AddHandler<RatingView, RatingViewHandleriOS>();
+				//handlers.AddHandler<RatingView, RatingViewHandleriOS>();
 #endif
             }); ;
 

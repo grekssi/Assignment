@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CoreGraphics;
 using UIKit;
 using Movies.Controls;
-using Movies.Platforms.iOS.Adapters;
+//using Movies.Platforms.iOS.Adapters;
 
 namespace Movies.NativeViews
 {
@@ -12,7 +12,7 @@ namespace Movies.NativeViews
         private int _value;
         private int _currentWidth;
         private int _totalNumberOfStars = 5;
-        private RatingAdapter starAdapter;
+        //private RatingAdapter starAdapter;
         private UICollectionView myCollectionView;
 
         public int TotalNumberOfStars
@@ -44,27 +44,27 @@ namespace Movies.NativeViews
 
         public void SetShape(Shape shape, string color)
         {
-            if (starAdapter != null)
-            {
-                starAdapter.Shape = shape;
-            }
+            //if (starAdapter != null)
+            //{
+            //    starAdapter.Shape = shape;
+            //}
         }
 
         public void SetColor(string color)
         {
-            if (starAdapter != null)
-            {
-                this.starAdapter.Color = color;
-            }
+            //if (starAdapter != null)
+            //{
+            //    this.starAdapter.Color = color;
+            //}
         }
 
         public void SetValue(int value)
         {
             Value = value;
-            if (starAdapter != null)
-            {
-                starAdapter.Value = Value;
-            }
+            //if (starAdapter != null)
+            //{
+            //    starAdapter.Value = Value;
+            //}
         }
 
         public NativeRatingViewIOS(IntPtr handle) : base(handle)
@@ -97,12 +97,12 @@ namespace Movies.NativeViews
                 stars.Add(new RatingElement());
             }
 
-            starAdapter = new RatingAdapter(stars);
-            starAdapter.TotalNumberOfStars = TotalNumberOfStars;
+            //starAdapter = new RatingAdapter(stars);
+            //starAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
-            myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.Key);
-            myCollectionView.DataSource = starAdapter;
-            myCollectionView.Delegate = new StarDelegate(starAdapter);
+            //myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.Key);
+            //myCollectionView.DataSource = starAdapter;
+            //myCollectionView.Delegate = new StarDelegate(starAdapter);
         }
     }
 }

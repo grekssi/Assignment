@@ -1946,11 +1946,11 @@ C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-androi
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\res\drawable\circle_unfilled_vector.xml
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
-C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\StarAdapter.java
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\StarViewHolder.java
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\res\drawable\rating_item.xml
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\res\drawable\rating_layout.xml
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\UnscrollableLinearLayoutManager.java
+C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\RatingAdapter.java
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\typemaps.arm64-v8a.ll
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\environment.arm64-v8a.ll
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.ll
@@ -1959,4 +1959,3 @@ C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-androi
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.o
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\jni_remap.arm64-v8a.o
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\app_shared_libraries\arm64-v8a\libxamarin-app.so
-C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\RatingAdapter.java

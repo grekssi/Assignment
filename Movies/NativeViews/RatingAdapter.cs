@@ -34,7 +34,6 @@ namespace Movies.NativeViews
             layoutParams.Width = newWidthPx;
             layoutParams.Height = newHeightPx;
             StarImage.LayoutParameters = layoutParams;
-
         }
     }
 
@@ -65,51 +64,53 @@ namespace Movies.NativeViews
             StarViewHolder starViewHolder = holder as StarViewHolder;
             starViewHolder.ChangeSize(StarsSize);
 
+            SetupClickHandler(starViewHolder, position);
+            ConfigureStarShape(starViewHolder, position);
+            ConfigureStarColor(starViewHolder, position);
+        }
+
+        private void SetupClickHandler(StarViewHolder starViewHolder, int position)
+        {
             starViewHolder.StarImage.Click += (sender, e) =>
             {
                 Value = position + 1;
                 NotifyDataSetChanged();
             };
+        }
 
+        private void ConfigureStarShape(StarViewHolder starViewHolder, int position)
+        {
+            int imageResource = GetImageResourceForShapeAndPosition(Shape, position);
+            starViewHolder.StarImage.SetImageResource(imageResource);
+        }
+
+        private int GetImageResourceForShapeAndPosition(Shape shape, int position)
+        {
+            bool isFilled = position < Value;
+
+            switch (shape)
+            {
+                case Shape.Square:
+                    return isFilled ? Resource.Drawable.square_filled_vector : Resource.Drawable.square_unfilled_vector;
+                case Shape.Circle:
+                    return isFilled ? Resource.Drawable.circle_filled_vector : Resource.Drawable.circle_unfilled_vector;
+                case Shape.Star:
+                    return isFilled ? Resource.Drawable.star_filled_vector : Resource.Drawable.star_unfilled_vector;
+                default:
+                    return 0; // Default or error value
+            }
+        }
+
+        private void ConfigureStarColor(StarViewHolder starViewHolder, int position)
+        {
             if (position < Value)
             {
-                switch (Shape)
-                {
-                    case Shape.Square:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.square_filled_vector);
-                        break;
-                    case Shape.Circle:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.circle_filled_vector);
-                        break;
-                    case Shape.Star:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.star_filled_vector);
-                        break;
-                    default:
-                        break;
-                }
-
                 var androidColor = Android.Graphics.Color.ParseColor(Color);
                 var colorStateList = ColorStateList.ValueOf(androidColor);
                 DrawableCompat.SetTintList(starViewHolder.StarImage.Drawable, colorStateList);
             }
-            else
-            {
-                switch (Shape)
-                {
-                    case Shape.Square:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.square_unfilled_vector);
-                        break;
-                    case Shape.Circle:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.circle_unfilled_vector);
-                        break;
-                    case Shape.Star:
-                        starViewHolder.StarImage.SetImageResource(Resource.Drawable.star_unfilled_vector);
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
+
 
         public override int ItemCount => TotalNumberOfStars;
     }

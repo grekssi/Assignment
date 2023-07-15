@@ -19,11 +19,9 @@ namespace Movies.NativeViews
 {
     public class NativeRatingView : ConstraintLayout
     {
-        private int _value;
-        private int _currentWidth;
         private int _totalNumberOfStars = 5;
         private RatingAdapter ratingAdapter;
-        RecyclerView myRecyclerView;
+        private RecyclerView myRecyclerView;
 
         public int TotalNumberOfStars
         {
@@ -31,24 +29,6 @@ namespace Movies.NativeViews
             set
             {
                 _totalNumberOfStars = value;
-            }
-        }
-
-        public int Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-            }
-        }
-
-        public int CurrentWidth
-        {
-            get => _currentWidth;
-            set
-            {
-                _currentWidth = value;
             }
         }
 
@@ -94,34 +74,57 @@ namespace Movies.NativeViews
 
         public void SetValue(int value)
         {
-            Value = value;
             if (ratingAdapter != null)
             {
-                ratingAdapter.Value = Value;
+                ratingAdapter.Value = value;
                 ratingAdapter.NotifyDataSetChanged();
             }
+
             Invalidate();
         }
 
         public NativeRatingView(Context context) : base(context)
         {
+            InflateView(context);
+            ConfigureLayoutParameters();
+            InitializeRecyclerView(context);
+            SetupRatingAdapter();
+        }
+
+        private void InflateView(Context context)
+        {
             Inflate(context, Resource.Drawable.rating_layout, this);
+        }
 
+        private void ConfigureLayoutParameters()
+        {
             LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+        }
 
+        private void InitializeRecyclerView(Context context)
+        {
             myRecyclerView = FindViewById<RecyclerView>(Resource.Id.my_recycler_view);
             myRecyclerView.SetLayoutManager(new UnscrollableLinearLayoutManager(context, LinearLayoutManager.Horizontal, false));
+        }
 
-            List<RatingElement> stars = new List<RatingElement>();
-            for (int i = 0; i < TotalNumberOfStars; i++)
-            {
-                stars.Add(new RatingElement());
-            }
-
+        private void SetupRatingAdapter()
+        {
+            List<RatingElement> stars = CreateStarsList(TotalNumberOfStars);
             ratingAdapter = new RatingAdapter(stars);
             ratingAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
             myRecyclerView.SetAdapter(ratingAdapter);
+        }
+
+        private List<RatingElement> CreateStarsList(int numberOfStars)
+        {
+            List<RatingElement> stars = new List<RatingElement>();
+            for (int i = 0; i < numberOfStars; i++)
+            {
+                stars.Add(new RatingElement());
+            }
+
+            return stars;
         }
     }
 }
