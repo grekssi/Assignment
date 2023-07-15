@@ -1,20 +1,28 @@
-﻿using CoreGraphics;
-using Foundation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CoreGraphics;
 using UIKit;
+using Movies.Controls;
+using Movies.Platforms.iOS.Adapters;
 
-namespace Movies.Platforms.iOS
+namespace Movies.NativeViews
 {
-    public class NativeRatingViewiOS : UIView
+    public class NativeRatingViewIOS : UIView
     {
         private int _value;
-        private UIImage _starEmpty;
-        private UIImage _starFull;
-        private UIColor _color;
+        private int _currentWidth;
+        private int _totalNumberOfStars = 5;
+        private RatingAdapter starAdapter;
+        private UICollectionView myCollectionView;
+
+        public int TotalNumberOfStars
+        {
+            get => _totalNumberOfStars;
+            set
+            {
+                _totalNumberOfStars = value;
+            }
+        }
 
         public int Value
         {
@@ -22,82 +30,79 @@ namespace Movies.Platforms.iOS
             set
             {
                 _value = value;
-                SetNeedsDisplay();
             }
         }
 
-        public UIColor Color
+        public int CurrentWidth
         {
-            get => _color;
+            get => _currentWidth;
             set
             {
-                _color = value;
-                _starEmpty = _starEmpty.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
-                _starFull = _starFull.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
-                SetNeedsDisplay();
+                _currentWidth = value;
             }
         }
-        public void SetColor(UIColor color)
+
+        public void SetShape(Shape shape, string color)
         {
-            Color = color;
+            if (starAdapter != null)
+            {
+                starAdapter.Shape = shape;
+            }
+        }
+
+        public void SetColor(string color)
+        {
+            if (starAdapter != null)
+            {
+                this.starAdapter.Color = color;
+            }
         }
 
         public void SetValue(int value)
         {
             Value = value;
-        }
-
-        public NativeRatingViewiOS(CGRect frame) : base(frame)
-        {
-            _starEmpty = UIImage.FromBundle("star_unfilled_vector");
-            _starFull = UIImage.FromBundle("star_filled_vector");
-        }
-
-        public override void Draw(CGRect rect)
-        {
-            base.Draw(rect);
-
-            int starWidth = 150;
-            int starHeight = 150;
-
-            int totalStarsWidth = 5 * starWidth + 4 * 10;
-
-            int leftStart = (int)((Bounds.Width - totalStarsWidth) / 2);
-            int topStart = (int)((Bounds.Height - starHeight) / 2);
-
-            for (int i = 0; i < 5; i++)
+            if (starAdapter != null)
             {
-                UIImage star = i < _value ? _starFull : _starEmpty;
-                UIColor color = i < _value ? _color : UIColor.LightGray;
-
-                var frame = new CGRect(leftStart + i * (starWidth + 10), topStart, starWidth, starHeight);
-
-                color.SetFill();
-                star.Draw(frame);
+                starAdapter.Value = Value;
             }
         }
 
-        public override void TouchesEnded(NSSet touches, UIEvent evt)
+        public NativeRatingViewIOS(IntPtr handle) : base(handle)
         {
-            base.TouchesEnded(touches, evt);
+            Initialize();
+        }
 
-            var touch = touches.AnyObject as UITouch;
-            if (touch != null)
+        public NativeRatingViewIOS(CGRect frame) : base(frame)
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            var layout = new UICollectionViewFlowLayout();
+            layout.ScrollDirection = UICollectionViewScrollDirection.Horizontal;
+            myCollectionView = new UICollectionView(Frame, layout);
+            AddSubview(myCollectionView);
+            myCollectionView.TranslatesAutoresizingMaskIntoConstraints = false;
+
+            // Set constraints for myCollectionView to fill the parent view
+            myCollectionView.LeadingAnchor.ConstraintEqualTo(LeadingAnchor).Active = true;
+            myCollectionView.TrailingAnchor.ConstraintEqualTo(TrailingAnchor).Active = true;
+            myCollectionView.TopAnchor.ConstraintEqualTo(TopAnchor).Active = true;
+            myCollectionView.BottomAnchor.ConstraintEqualTo(BottomAnchor).Active = true;
+
+            List<RatingElement> stars = new List<RatingElement>();
+            for (int i = 0; i < TotalNumberOfStars; i++)
             {
-                int starWidth = 150;
-                int totalStarsWidth = 5 * starWidth + 4 * 10;
-
-                int leftStart = (int)((Bounds.Width - totalStarsWidth) / 2);
-
-                int index = (int)((touch.LocationInView(this).X - leftStart) / (starWidth + 10));
-
-                if (index >= 0 && index < 5)
-                {
-                    _value = index + 1;
-                    SetNeedsDisplay();
-                }
+                stars.Add(new RatingElement());
             }
+
+            starAdapter = new RatingAdapter(stars);
+            starAdapter.TotalNumberOfStars = TotalNumberOfStars;
+
+            myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.Key);
+            myCollectionView.DataSource = starAdapter;
+            myCollectionView.Delegate = new StarDelegate(starAdapter);
         }
     }
-
 }

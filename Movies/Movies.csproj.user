@@ -3,8 +3,8 @@
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net7.0-android</ActiveDebugFramework>
-    <ActiveDebugProfile>Pixel 6 Pro API 31 (Android 12.0 - API 31)</ActiveDebugProfile>
-    <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
+    <ActiveDebugProfile>Samsung SM-S918B (Android 13.0 - API 33)</ActiveDebugProfile>
+    <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <DefaultDevice>Pixel_6_Pro_API_31</DefaultDevice>
     <AndroidDesignerPreferredDevice>7.3in Foldable</AndroidDesignerPreferredDevice>
   </PropertyGroup>

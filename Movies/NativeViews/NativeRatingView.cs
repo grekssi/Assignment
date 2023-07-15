@@ -22,7 +22,7 @@ namespace Movies.NativeViews
         private int _value;
         private int _currentWidth;
         private int _totalNumberOfStars = 5;
-        private StarAdapter starAdapter;
+        private RatingAdapter ratingAdapter;
         RecyclerView myRecyclerView;
 
         public int TotalNumberOfStars
@@ -54,28 +54,28 @@ namespace Movies.NativeViews
 
         public void SetTotalNumberOfStars(int stars)
         {
-            if (starAdapter != null)
+            if (ratingAdapter != null)
             {
-                starAdapter.TotalNumberOfStars = stars;
-                starAdapter.NotifyDataSetChanged();
+                ratingAdapter.TotalNumberOfStars = stars;
+                ratingAdapter.NotifyDataSetChanged();
             }
         }
 
         public void SetCurrentWidth(double width)
         {
-            if (starAdapter != null)
+            if (ratingAdapter != null)
             {
-                starAdapter.StarsSize = width;
-                starAdapter.NotifyDataSetChanged();
+                ratingAdapter.StarsSize = width;
+                ratingAdapter.NotifyDataSetChanged();
             }
         }
 
         public void SetShape(Shape shape, string color)
         {
-            if (starAdapter != null)
+            if (ratingAdapter != null)
             {
-                starAdapter.Shape = shape;
-                starAdapter.NotifyDataSetChanged();
+                ratingAdapter.Shape = shape;
+                ratingAdapter.NotifyDataSetChanged();
             }
 
             Invalidate();
@@ -83,10 +83,10 @@ namespace Movies.NativeViews
 
         public void SetColor(string color)
         {
-            if (starAdapter != null)
+            if (ratingAdapter != null)
             {
-                this.starAdapter.Color = color;
-                starAdapter.NotifyDataSetChanged();
+                this.ratingAdapter.Color = color;
+                ratingAdapter.NotifyDataSetChanged();
             }
 
             Invalidate();
@@ -95,10 +95,10 @@ namespace Movies.NativeViews
         public void SetValue(int value)
         {
             Value = value;
-            if (starAdapter != null)
+            if (ratingAdapter != null)
             {
-                starAdapter.Value = Value;
-                starAdapter.NotifyDataSetChanged();
+                ratingAdapter.Value = Value;
+                ratingAdapter.NotifyDataSetChanged();
             }
             Invalidate();
         }
@@ -118,10 +118,10 @@ namespace Movies.NativeViews
                 stars.Add(new RatingElement());
             }
 
-            starAdapter = new StarAdapter(stars);
-            starAdapter.TotalNumberOfStars = TotalNumberOfStars;
+            ratingAdapter = new RatingAdapter(stars);
+            ratingAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
-            myRecyclerView.SetAdapter(starAdapter);
+            myRecyclerView.SetAdapter(ratingAdapter);
         }
     }
 }

@@ -1959,3 +1959,4 @@ C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-androi
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.o
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\jni_remap.arm64-v8a.o
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\app_shared_libraries\arm64-v8a\libxamarin-app.so
+C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\android\src\crc64f30551b2aa1b1899\RatingAdapter.java

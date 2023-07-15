@@ -38,7 +38,7 @@ namespace Movies.NativeViews
         }
     }
 
-    public class StarAdapter : RecyclerView.Adapter
+    public class RatingAdapter : RecyclerView.Adapter
     {
         public int TotalNumberOfStars { get; set; }
         public int Value { get; set; }
@@ -49,7 +49,7 @@ namespace Movies.NativeViews
 
         private List<RatingElement> _stars;
 
-        public StarAdapter(List<RatingElement> stars)
+        public RatingAdapter(List<RatingElement> stars)
         {
             _stars = stars;
         }
