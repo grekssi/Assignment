@@ -8,34 +8,34 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Movies
-build_property.ProjectDir = /Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/
+build_property.ProjectDir = C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\
 
-[/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/App.xaml]
+[C:/Users/BedrosGarabedyan/Desktop/Maui/Assignment/Movies/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Movies.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/AppShell.xaml]
+[C:/Users/BedrosGarabedyan/Desktop/Maui/Assignment/Movies/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Movies.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/MainPage.xaml]
+[C:/Users/BedrosGarabedyan/Desktop/Maui/Assignment/Movies/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Movies.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/Resources/Styles/Colors.xaml]
+[C:/Users/BedrosGarabedyan/Desktop/Maui/Assignment/Movies/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Movies.Resources.Styles.Colors.xaml
-build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
-build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies/Resources/Styles/Styles.xaml]
+[C:/Users/BedrosGarabedyan/Desktop/Maui/Assignment/Movies/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Movies.Resources.Styles.Styles.xaml
-build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
-build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

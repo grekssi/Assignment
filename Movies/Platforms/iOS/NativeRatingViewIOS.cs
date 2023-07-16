@@ -106,13 +106,11 @@ namespace Movies.Platforms.iOS
 
             AddSubview(myCollectionView);
 
-            // Add constraints to center myCollectionView within its parent
             myCollectionView.CenterXAnchor.ConstraintEqualTo(CenterXAnchor).Active = true;
             myCollectionView.CenterYAnchor.ConstraintEqualTo(CenterYAnchor).Active = true;
 
-            // Add constraints for width and height
-            myCollectionView.WidthAnchor.ConstraintEqualTo(350).Active = true; // replace with desired width
-            myCollectionView.HeightAnchor.ConstraintEqualTo(50).Active = true; // replace with desired height
+            myCollectionView.WidthAnchor.ConstraintEqualTo(350).Active = true;
+            myCollectionView.HeightAnchor.ConstraintEqualTo(50).Active = true;
         }
 
 
@@ -122,7 +120,7 @@ namespace Movies.Platforms.iOS
             ratingAdapter = new RatingAdapterIOS(stars);
             ratingAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
-            myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.CellId);
+            myCollectionView.RegisterClassForCell(typeof(RatingCell), RatingCell.CellId);
             myCollectionView.DataSource = ratingAdapter;
             myCollectionView.ReloadData();
         }

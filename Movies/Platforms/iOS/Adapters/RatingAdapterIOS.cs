@@ -16,13 +16,13 @@ using System.Xml;
 
 namespace Movies.Platforms.iOS.Adapters
 {
-    public class StarCell : UICollectionViewCell
+    public class RatingCell : UICollectionViewCell
     {
         public UIImageView StarImage { get; set; }
         public static string CellId = "StarCell";
 
         [Export("initWithFrame:")]
-        public StarCell(CGRect frame) : base(frame)
+        public RatingCell(CGRect frame) : base(frame)
         {
             StarImage = new UIImageView(frame);
             ContentView.AddSubview(StarImage);
@@ -52,7 +52,7 @@ namespace Movies.Platforms.iOS.Adapters
 
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
-            var cell = (StarCell)collectionView.DequeueReusableCell(StarCell.CellId, indexPath);
+            var cell = (RatingCell)collectionView.DequeueReusableCell(RatingCell.CellId, indexPath);
             cell.ChangeSize(StarsSize);
 
             SetupClickHandler(cell, indexPath.Row, collectionView);
@@ -61,7 +61,7 @@ namespace Movies.Platforms.iOS.Adapters
             return cell;
         }
 
-        private void SetupClickHandler(StarCell starCell, int position, UICollectionView collectionView)
+        private void SetupClickHandler(RatingCell starCell, int position, UICollectionView collectionView)
         {
             UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(() =>
             {
@@ -72,7 +72,7 @@ namespace Movies.Platforms.iOS.Adapters
             starCell.AddGestureRecognizer(tapGesture);
         }
 
-        private void ConfigureStarShape(StarCell starCell, int position)
+        private void ConfigureStarShape(RatingCell starCell, int position)
         {
             UIImage image = GetImageForShapeAndPosition(Shape, position);
             starCell.StarImage.Image = image;

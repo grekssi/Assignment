@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Movies.Controls;
-using Movies.Platforms.iOS.Handlers;
 #if IOS
 //using Movies.Platforms.iOS.Handlers;
 #endif

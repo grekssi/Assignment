@@ -44,6 +44,34 @@ namespace Movies.ViewModels
             }
         }
 
+        private double _imageWidth;
+        public double ImageWidth
+        {
+            get { return _imageWidth; }
+            set
+            {
+                if (_imageWidth != value)
+                {
+                    _imageWidth = value;
+                    OnPropertyChanged(nameof(ImageWidth));
+                }
+            }
+        }
+
+        private double _imageHeight;
+        public double ImageHeight
+        {
+            get { return _imageHeight; }
+            set
+            {
+                if (_imageHeight != value)
+                {
+                    _imageHeight = value;
+                    OnPropertyChanged(nameof(ImageHeight));
+                }
+            }
+        }
+
         private double _elementWidth = 40;
         public double ElementWidth
         {
@@ -55,6 +83,39 @@ namespace Movies.ViewModels
                     _elementWidth = value;
                     OnPropertyChanged(nameof(ElementWidth)); 
                 }
+            }
+        }
+
+        private string _imageSourceStar;
+        public string ImageSourceStar
+        {
+            get => _imageSourceStar;
+            set
+            {
+                _imageSourceStar = value;
+                OnPropertyChanged(nameof(ImageSourceStar));
+            }
+        }
+
+        private string _imageSourceSquare;
+        public string ImageSourceSquare
+        {
+            get => _imageSourceSquare;
+            set
+            {
+                _imageSourceSquare = value;
+                OnPropertyChanged(nameof(ImageSourceSquare));
+            }
+        }
+
+        private string _imageSourceCircle;
+        public string ImageSourceCircle
+        {
+            get => _imageSourceCircle;
+            set
+            {
+                _imageSourceCircle = value;
+                OnPropertyChanged(nameof(ImageSourceCircle));
             }
         }
 
@@ -71,6 +132,7 @@ namespace Movies.ViewModels
 
         public MoviesViewModel()
         {
+            SetImageSourceAndDimension();
             Movies = new ObservableCollection<Movie>();
             PullMovies();
 
@@ -80,6 +142,27 @@ namespace Movies.ViewModels
             StarShapeCommamnd = new Command(OnStarShapeClicked);
             CircleShapeCommand = new Command(OnCircleShapeClicked);
             SquareShapeCommand = new Command(OnSquareShapeClicked);
+        }
+
+        private void SetImageSourceAndDimension()
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    ImageWidth = 350;
+                    ImageHeight = 500;
+                    ImageSourceCircle = "Images/circle.png";
+                    ImageSourceSquare = "Images/square.png";
+                    ImageSourceStar = "Images/star.png";
+                    break;
+
+                case Device.Android:
+                    ImageWidth = 420;
+                    ImageSourceCircle = "Resources/Images/circle_unfilled_vector_maui.xml";
+                    ImageSourceSquare = "Resources/Images/square_unfilled_vector_maui.xml";
+                    ImageSourceStar = "Resources/Images/star_unfilled_vector_maui.xml";
+                    break;
+            }
         }
 
         private void OnRedClicked()
