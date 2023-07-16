@@ -294,3 +294,6 @@ C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccat
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\Movies.pdb
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\Movies.genruntimeconfig.cache
 C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\ref\Movies.dll
+C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\circle_unfilled_vector_maui.xml
+C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\square_unfilled_vector_maui.xml
+C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\star_unfilled_vector_maui.xml

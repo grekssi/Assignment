@@ -1,64 +1,67 @@
-﻿//#if IOS
-//using Microsoft.Maui.Handlers;
-//using Movies.Controls;
-//using Movies.NativeViews;
-//using Movies.Platforms.iOS;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿#if IOS
+using CoreGraphics;
+using Microsoft.Maui.Handlers;
+using Movies.Controls;
+using Movies.NativeViews;
+using Movies.Platforms.iOS;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UIKit;
 
-//namespace Movies.Platforms.iOS.Handlers
-//{
-//    public partial class RatingViewHandleriOS : ViewHandler<RatingView, NativeRatingViewIOS>
-//    {
-//        public static IPropertyMapper<RatingView, RatingViewHandleriOS> PropertyMapper = new PropertyMapper<RatingView, RatingViewHandleriOS>(ViewHandler.ViewMapper)
-//        {
-//            [nameof(RatingView.ElementWidth)] = MapWidth,
-//            [nameof(RatingView.Value)] = MapValue,
-//            [nameof(RatingView.Shape)] = MapShape,
-//            [nameof(RatingView.Color)] = MapColor,
-//            [nameof(RatingView.TotalStars)] = MapTotalNumberOfStars,
-//        };
+namespace Movies.Platforms.iOS.Handlers
+{
+    public partial class RatingViewHandleriOS : ViewHandler<RatingView, NativeRatingViewIOS>
+    {
+        public static IPropertyMapper<RatingView, RatingViewHandleriOS> PropertyMapper = new PropertyMapper<RatingView, RatingViewHandleriOS>(ViewHandler.ViewMapper)
+        {
+            [nameof(RatingView.ElementWidth)] = MapWidth,
+            [nameof(RatingView.Value)] = MapValue,
+            [nameof(RatingView.Shape)] = MapShape,
+            [nameof(RatingView.Color)] = MapColor,
+            [nameof(RatingView.TotalStars)] = MapTotalNumberOfStars,
+        };
 
-//        public static CommandMapper<RatingView, RatingViewHandleriOS> CommandMapper = new(ViewCommandMapper)
-//        {
-//        };
+        public static CommandMapper<RatingView, RatingViewHandleriOS> CommandMapper = new(ViewCommandMapper)
+        {
+        };
 
-//        public RatingViewHandleriOS() : base(PropertyMapper, CommandMapper)
-//        {
-//        }
+        public RatingViewHandleriOS() : base(PropertyMapper, CommandMapper)
+        {
+        }
 
-//        public static void MapValue(RatingViewHandleriOS handler, RatingView view)
-//        {
-//            handler.PlatformView?.SetValue(view.Value);
-//        }
+        public static void MapValue(RatingViewHandleriOS handler, RatingView view)
+        {
+            handler.PlatformView?.SetValue(view.Value);
+        }
 
-//        public static void MapColor(RatingViewHandleriOS handler, RatingView view)
-//        {
-//            handler.PlatformView?.SetColor(view.Color);
-//        }
+        public static void MapColor(RatingViewHandleriOS handler, RatingView view)
+        {
+            handler.PlatformView?.SetColor(view.Color);
+        }
 
-//        public static void MapTotalNumberOfStars(RatingViewHandleriOS handler, RatingView view)
-//        {
-//            handler.PlatformView?.SetTotalNumberOfStars(view.TotalStars);
-//        }
+        public static void MapTotalNumberOfStars(RatingViewHandleriOS handler, RatingView view)
+        {
+            handler.PlatformView?.SetTotalNumberOfStars(view.TotalStars);
+        }
 
-//        public static void MapShape(RatingViewHandleriOS handler, RatingView view)
-//        {
-//            handler.PlatformView?.SetShape(view.Shape, view.Color);
-//        }
+        public static void MapShape(RatingViewHandleriOS handler, RatingView view)
+        {
+            handler.PlatformView?.SetShape(view.Shape, view.Color);
+        }
 
-//        public static void MapWidth(RatingViewHandleriOS handler, RatingView view)
-//        {
-//            handler.PlatformView?.SetCurrentWidth(view.ElementWidth);
-//        }
+        public static void MapWidth(RatingViewHandleriOS handler, RatingView view)
+        {
+            handler.PlatformView?.SetCurrentWidth((nfloat)view.ElementWidth);
+        }
 
-//        protected override RatingViewHandleriOS CreatePlatformView()
-//        {
-//            return new NativeRatingViewIOS();
-//        }
-//    }
-//}
-//#endif
+        protected override NativeRatingViewIOS CreatePlatformView()
+        {
+            var frame = new CGRect(0, 0, UIScreen.MainScreen.Bounds.Width, 50);
+            return new NativeRatingViewIOS(frame);
+        }
+    }
+}
+#endif

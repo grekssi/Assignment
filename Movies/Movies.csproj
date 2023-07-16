@@ -68,6 +68,7 @@
 	<ItemGroup>
 	  <Folder Include="Handlers\" />
 	  <Folder Include="Platforms\Android\Adapters\" />
+	  <Folder Include="Platforms\iOS\Utils\" />
 	</ItemGroup>
 
 </Project>

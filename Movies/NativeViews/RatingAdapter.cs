@@ -1,17 +1,10 @@
 ﻿#if ANDROID
-using Android.Content;
 using Android.Content.Res;
 using Android.Views;
 using Android.Widget;
-using AndroidX.Core.Content;
 using AndroidX.Core.Graphics.Drawable;
 using AndroidX.RecyclerView.Widget;
 using Movies.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Movies.NativeViews
 {

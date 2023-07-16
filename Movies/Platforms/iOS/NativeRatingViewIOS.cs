@@ -1,18 +1,19 @@
-﻿using System;
+﻿#if __IOS__
+using System;
 using System.Collections.Generic;
-using CoreGraphics;
 using UIKit;
+using CoreGraphics;
+using Foundation;
+using Microsoft.Maui.Controls;
+using Movies.NativeViews;
 using Movies.Controls;
-//using Movies.Platforms.iOS.Adapters;
 
-namespace Movies.NativeViews
+namespace Movies.Platforms.iOS
 {
     public class NativeRatingViewIOS : UIView
     {
-        private int _value;
-        private int _currentWidth;
         private int _totalNumberOfStars = 5;
-        //private RatingAdapter starAdapter;
+        private RatingAdapterIOS ratingAdapter;
         private UICollectionView myCollectionView;
 
         public int TotalNumberOfStars
@@ -21,87 +22,107 @@ namespace Movies.NativeViews
             set
             {
                 _totalNumberOfStars = value;
+                ratingAdapter.TotalNumberOfStars = value;
+                myCollectionView.ReloadData();
             }
         }
 
-        public int Value
+        public void SetCurrentWidth(nfloat width)
         {
-            get => _value;
-            set
+            if (ratingAdapter != null)
             {
-                _value = value;
-            }
-        }
-
-        public int CurrentWidth
-        {
-            get => _currentWidth;
-            set
-            {
-                _currentWidth = value;
+                ratingAdapter.StarsSize = width;
+                myCollectionView.ReloadData();
             }
         }
 
         public void SetShape(Shape shape, string color)
         {
-            //if (starAdapter != null)
-            //{
-            //    starAdapter.Shape = shape;
-            //}
+            if (ratingAdapter != null)
+            {
+                ratingAdapter.Shape = shape;
+                myCollectionView.ReloadData();
+            }
+
+            SetNeedsDisplay();
         }
 
         public void SetColor(string color)
         {
-            //if (starAdapter != null)
-            //{
-            //    this.starAdapter.Color = color;
-            //}
+            if (ratingAdapter != null)
+            {
+                this.ratingAdapter.Color = color;
+                myCollectionView.ReloadData();
+            }
+
+            SetNeedsDisplay();
+        }
+
+        public void SetTotalNumberOfStars(int number)
+        {
+            if (ratingAdapter != null)
+            {
+                this.ratingAdapter.TotalNumberOfStars = number;
+                myCollectionView.ReloadData();
+            }
+
+            SetNeedsDisplay();
         }
 
         public void SetValue(int value)
         {
-            Value = value;
-            //if (starAdapter != null)
-            //{
-            //    starAdapter.Value = Value;
-            //}
-        }
+            if (ratingAdapter != null)
+            {
+                ratingAdapter.Value = value;
+                myCollectionView.ReloadData();
+            }
 
-        public NativeRatingViewIOS(IntPtr handle) : base(handle)
-        {
-            Initialize();
+            SetNeedsDisplay();
         }
 
         public NativeRatingViewIOS(CGRect frame) : base(frame)
         {
-            Initialize();
+            InitializeCollectionView();
+            SetupRatingAdapter();
         }
 
-        private void Initialize()
+        private void InitializeCollectionView()
         {
-            var layout = new UICollectionViewFlowLayout();
-            layout.ScrollDirection = UICollectionViewScrollDirection.Horizontal;
-            myCollectionView = new UICollectionView(Frame, layout);
+            var layout = new UICollectionViewFlowLayout
+            {
+                ScrollDirection = UICollectionViewScrollDirection.Horizontal,
+                MinimumInteritemSpacing = 0,
+                MinimumLineSpacing = 0
+            };
+
+            myCollectionView = new UICollectionView(Bounds, layout);
+            myCollectionView.AllowsSelection = false;
+            myCollectionView.AllowsMultipleSelection = false;
+
             AddSubview(myCollectionView);
-            myCollectionView.TranslatesAutoresizingMaskIntoConstraints = false;
+        }
 
-            myCollectionView.LeadingAnchor.ConstraintEqualTo(LeadingAnchor).Active = true;
-            myCollectionView.TrailingAnchor.ConstraintEqualTo(TrailingAnchor).Active = true;
-            myCollectionView.TopAnchor.ConstraintEqualTo(TopAnchor).Active = true;
-            myCollectionView.BottomAnchor.ConstraintEqualTo(BottomAnchor).Active = true;
+        private void SetupRatingAdapter()
+        {
+            List<RatingElement> stars = CreateStarsList(TotalNumberOfStars);
+            ratingAdapter = new RatingAdapterIOS(stars);
+            ratingAdapter.TotalNumberOfStars = TotalNumberOfStars;
 
+            myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.CellId);
+            myCollectionView.DataSource = ratingAdapter;
+            myCollectionView.ReloadData();
+        }
+
+        private List<RatingElement> CreateStarsList(int numberOfStars)
+        {
             List<RatingElement> stars = new List<RatingElement>();
-            for (int i = 0; i < TotalNumberOfStars; i++)
+            for (int i = 0; i < numberOfStars; i++)
             {
                 stars.Add(new RatingElement());
             }
 
-            //starAdapter = new RatingAdapter(stars);
-            //starAdapter.TotalNumberOfStars = TotalNumberOfStars;
-
-            //myCollectionView.RegisterClassForCell(typeof(StarCell), StarCell.Key);
-            //myCollectionView.DataSource = starAdapter;
-            //myCollectionView.Delegate = new StarDelegate(starAdapter);
+            return stars;
         }
     }
 }
+#endif
