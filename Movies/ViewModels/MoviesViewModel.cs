@@ -14,6 +14,9 @@ namespace Movies.ViewModels
 {
     public class MoviesViewModel : INotifyPropertyChanged
     {
+        public ICommand StarShapeCommamnd { get; private set; }
+        public ICommand SquareShapeCommand { get; private set; }
+        public ICommand CircleShapeCommand { get; private set; }
         public ICommand RedCommand { get; private set; }
         public ICommand BlueCommand { get; private set; }
         public ICommand YellowCommand { get; private set; }
@@ -74,6 +77,9 @@ namespace Movies.ViewModels
             RedCommand = new Command(OnRedClicked);
             BlueCommand = new Command(OnBlueClicked);
             YellowCommand = new Command(OnYellowClicked);
+            StarShapeCommamnd = new Command(OnStarShapeClicked);
+            CircleShapeCommand = new Command(OnCircleShapeClicked);
+            SquareShapeCommand = new Command(OnSquareShapeClicked);
         }
 
         private void OnRedClicked()
@@ -98,6 +104,21 @@ namespace Movies.ViewModels
             {
                 movie.Color = "#FFFF00";
             }
+        }
+
+        private void OnCircleShapeClicked()
+        {
+            this.Shape = Shape.Circle;
+        }
+
+        private void OnSquareShapeClicked()
+        {
+            this.Shape = Shape.Square;
+        }
+
+        private void OnStarShapeClicked()
+        {
+            this.Shape = Shape.Star;
         }
 
         public void PullMovies()
