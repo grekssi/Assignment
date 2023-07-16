@@ -21,8 +21,14 @@
                 <Button BackgroundColor="Blue" WidthRequest="70" HeightRequest="30" Padding="0" Text="Blue" TextColor="White" Command="{Binding BlueCommand}"/>
                 <Button BackgroundColor="Yellow" WidthRequest="70" HeightRequest="30" Padding="0" Text="Yellow" TextColor="Black" Command="{Binding YellowCommand}"/>
             </StackLayout>
-            <Label Text="Adjust number of stars" Margin="30, 20, 0, 0"/>
+            <Label Text="Adjust number of elements" Margin="30, 20, 0, 0"/>
             <Slider x:Name="MySlider" Minimum="0" Maximum="7" Value="{Binding TotalStars, Mode=TwoWay}" ValueChanged="OnSliderValueChanged" Margin="20, 20, 20, 0"/>
+            <Label Text="Select Shape" Margin="30, 20, 0, 0"/>
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/circle_filled_vector_maui.xml" Command="{Binding CircleShapeCommand}"/>
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/square_unfilled_vector_maui.xml" Command="{Binding SquareShapeCommand}"/>
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/star_unfilled_vector_maui.xml" Command="{Binding StarShapeCommamnd}"/>
+            </StackLayout>
             <CollectionView ItemsSource="{Binding Movies}" WidthRequest="300" Margin="0, 20, 0, 0">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"

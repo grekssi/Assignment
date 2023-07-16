@@ -53,6 +53,8 @@ path;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
 path;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
 path;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
 path;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
+path;obj\Debug\net7.0-android\resizetizer\r\drawable\circle_filled_vector_maui.xml
+path;obj\Debug\net7.0-android\resizetizer\r\drawable\star_unfilled_vector_maui.xml
 paths;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\155\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
 resources;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\151\jl\res\values\strings.xml
 resources;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\152\jl\res\values\attrs.xml
@@ -89,3 +91,5 @@ vector;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
 vector;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
 vector;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
 vector;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
+vector;obj\Debug\net7.0-android\resizetizer\r\drawable\circle_filled_vector_maui.xml
+vector;obj\Debug\net7.0-android\resizetizer\r\drawable\star_unfilled_vector_maui.xml
