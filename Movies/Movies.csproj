@@ -30,6 +30,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -58,11 +61,22 @@
 	  <None Remove="Resources\Images\circle_unfilled_vector_maui.xml" />
 	  <None Remove="Resources\Images\square_unfilled_vector_maui.xml" />
 	  <None Remove="Resources\Images\star_unfilled_vector_maui.xml" />
+	  <None Remove="Platforms\iOS\Resources\circle_filled_vector.xml" />
+	  <None Remove="Platforms\iOS\Resources\circle_unfilled_vector.xml" />
+	  <None Remove="Platforms\iOS\Resources\square_filled_vector.xml" />
+	  <None Remove="Platforms\iOS\Resources\square_unfilled_vector.xml" />
+	  <None Remove="Platforms\iOS\Resources\star_filled_vector.xml" />
+	  <None Remove="Platforms\iOS\Resources\star_unfilled_vector.xml" />
+	  <None Remove="Resources\Images\circle.png" />
+	  <None Remove="Resources\Images\square.png" />
+	  <None Remove="Resources\Images\star.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="SkiaSharp" Version="2.88.3" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,4 +85,20 @@
 	  <Folder Include="Platforms\iOS\Utils\" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">
+	  <PackageReference Include="SushiHangover.SVGKit.Binding" Version="1.0.4" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Platforms\iOS\Resources\circle_filled_vector.xml" />
+	  <EmbeddedResource Include="Platforms\iOS\Resources\circle_unfilled_vector.xml" />
+	  <EmbeddedResource Include="Platforms\iOS\Resources\square_filled_vector.xml" />
+	  <EmbeddedResource Include="Platforms\iOS\Resources\square_unfilled_vector.xml" />
+	  <EmbeddedResource Include="Platforms\iOS\Resources\star_filled_vector.xml" />
+	  <EmbeddedResource Include="Platforms\iOS\Resources\star_unfilled_vector.xml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\circle.png" />
+	  <BundleResource Include="Resources\Images\square.png" />
+	  <BundleResource Include="Resources\Images\star.png" />
+	</ItemGroup>
 </Project>

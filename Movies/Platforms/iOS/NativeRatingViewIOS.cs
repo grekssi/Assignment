@@ -7,6 +7,7 @@ using Foundation;
 using Microsoft.Maui.Controls;
 using Movies.NativeViews;
 using Movies.Controls;
+using Movies.Platforms.iOS.Adapters;
 
 namespace Movies.Platforms.iOS
 {
@@ -90,17 +91,30 @@ namespace Movies.Platforms.iOS
         {
             var layout = new UICollectionViewFlowLayout
             {
+                SectionInset = new UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0),
                 ScrollDirection = UICollectionViewScrollDirection.Horizontal,
                 MinimumInteritemSpacing = 0,
                 MinimumLineSpacing = 0
             };
 
-            myCollectionView = new UICollectionView(Bounds, layout);
-            myCollectionView.AllowsSelection = false;
-            myCollectionView.AllowsMultipleSelection = false;
+            myCollectionView = new UICollectionView(Bounds, layout)
+            {
+                TranslatesAutoresizingMaskIntoConstraints = false,
+                AllowsSelection = false,
+                AllowsMultipleSelection = false,
+            };
 
             AddSubview(myCollectionView);
+
+            // Add constraints to center myCollectionView within its parent
+            myCollectionView.CenterXAnchor.ConstraintEqualTo(CenterXAnchor).Active = true;
+            myCollectionView.CenterYAnchor.ConstraintEqualTo(CenterYAnchor).Active = true;
+
+            // Add constraints for width and height
+            myCollectionView.WidthAnchor.ConstraintEqualTo(350).Active = true; // replace with desired width
+            myCollectionView.HeightAnchor.ConstraintEqualTo(50).Active = true; // replace with desired height
         }
+
 
         private void SetupRatingAdapter()
         {

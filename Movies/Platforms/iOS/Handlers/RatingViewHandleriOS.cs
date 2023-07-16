@@ -59,7 +59,7 @@ namespace Movies.Platforms.iOS.Handlers
 
         protected override NativeRatingViewIOS CreatePlatformView()
         {
-            var frame = new CGRect(0, 0, UIScreen.MainScreen.Bounds.Width, 50);
+            var frame = new CGRect(0, 0, 500, 50);
             return new NativeRatingViewIOS(frame);
         }
     }

@@ -5,14 +5,14 @@
       <CodesignSigningKey></CodesignSigningKey>
       <CodesignEntitlements></CodesignEntitlements>
       <CodesignUseSecureTimestamp></CodesignUseSecureTimestamp>
-      <CodesignAllocate>\Applications\Xcode.app\Contents\Developer\Toolchains\XcodeDefault.xctoolchain\usr\bin\codesign_allocate</CodesignAllocate>
+      <CodesignAllocate>/Users/bedrosgarabedyan/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate</CodesignAllocate>
       <RequireCodeSigning>false</RequireCodeSigning>
       <CodesignExtraArgs></CodesignExtraArgs>
       <CodesignResourceRules></CodesignResourceRules>
       <CodesignDisableTimestamp>true</CodesignDisableTimestamp>
       <CodesignKeychain></CodesignKeychain>
       <CodesignUseHardenedRuntime></CodesignUseHardenedRuntime>
-      <SourceProjectPath>C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies</SourceProjectPath>
+      <SourceProjectPath>/Users/bedrosgarabedyan/Documents/GitHub/Assignment/Movies</SourceProjectPath>
     </_CodesignBundle>
   </ItemGroup>
 </Project>

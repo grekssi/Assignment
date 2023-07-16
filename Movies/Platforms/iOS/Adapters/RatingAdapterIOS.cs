@@ -6,8 +6,15 @@ using Foundation;
 using CoreGraphics;
 using Movies.Controls;
 using Microsoft.Maui.Controls;
+using SkiaSharp;
+using SkiaSharp.Extended.Svg;
+using Movies.NativeViews;
+using System.Reflection;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using System.Text;
+using System.Xml;
 
-namespace Movies.NativeViews
+namespace Movies.Platforms.iOS.Adapters
 {
     public class StarCell : UICollectionViewCell
     {
@@ -50,7 +57,6 @@ namespace Movies.NativeViews
 
             SetupClickHandler(cell, indexPath.Row, collectionView);
             ConfigureStarShape(cell, indexPath.Row);
-            ConfigureStarColor(cell, indexPath.Row);
 
             return cell;
         }
@@ -76,17 +82,17 @@ namespace Movies.NativeViews
         {
             bool isFilled = position < Value;
             UIImage image;
-
+            
             switch (shape)
             {
                 case Shape.Square:
-                    image = isFilled ? UIImage.FromBundle("square_filled") : UIImage.FromBundle("square_unfilled");
+                    image = isFilled ? LoadSvg("Movies.Platforms.iOS.Resources.square_filled_vector.xml", isFilled) : LoadSvg("Movies.Platforms.iOS.Resources.square_unfilled_vector.xml", isFilled);
                     break;
                 case Shape.Circle:
-                    image = isFilled ? UIImage.FromBundle("circle_filled") : UIImage.FromBundle("circle_unfilled");
+                    image = isFilled ? LoadSvg("Movies.Platforms.iOS.Resources.circle_filled_vector.xml", isFilled) : LoadSvg("Movies.Platforms.iOS.Resources.circle_unfilled_vector.xml", isFilled);
                     break;
                 case Shape.Star:
-                    image = isFilled ? UIImage.FromBundle("star_filled") : UIImage.FromBundle("star_unfilled");
+                    image = isFilled ? LoadSvg("Movies.Platforms.iOS.Resources.star_filled_vector.xml", isFilled) : LoadSvg("Movies.Platforms.iOS.Resources.star_unfilled_vector.xml", isFilled);
                     break;
                 default:
                     image = null;
@@ -96,23 +102,43 @@ namespace Movies.NativeViews
             return image;
         }
 
-        private void ConfigureStarColor(StarCell starCell, int position)
-        {
-            if (position < Value)
-            {
-                UIColor uiColor = UIColor.Clear;
-
-                //if (ColorUtil.TryGetColor(Color, out uiColor))
-                //{
-                //    starCell.StarImage.TintColor = uiColor;
-                //}
-            }
-        }
-
         public override nint GetItemsCount(UICollectionView collectionView, nint section)
         {
             return TotalNumberOfStars;
         }
+
+        public UIImage LoadSvg(string resourceName, bool isFilled)
+        {
+            var svg = new SkiaSharp.Extended.Svg.SKSvg();
+
+            using (var stream = GetType().Assembly.GetManifestResourceStream(resourceName))
+            {
+                svg.Load(stream);
+            }
+
+            var bitmap = new SKBitmap((int)svg.CanvasSize.Width, (int)svg.CanvasSize.Height);
+
+            using (var canvas = new SKCanvas(bitmap))
+            {
+                var paint = new SKPaint
+                {
+                    FilterQuality = SKFilterQuality.High,
+                    ColorFilter = SKColorFilter.CreateBlendMode(SKColor.Parse(this.Color), SKBlendMode.SrcIn)
+                };
+
+                canvas.Clear(SKColors.Transparent);
+                canvas.DrawPicture(svg.Picture, isFilled ? paint : null);
+            }
+
+            var image = SKImage.FromBitmap(bitmap);
+
+            using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
+            {
+                return UIImage.LoadFromData(NSData.FromArray(data.ToArray()));
+            }
+        }
+
+
     }
 }
 #endif

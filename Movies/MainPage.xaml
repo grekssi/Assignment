@@ -25,20 +25,20 @@
             <Slider x:Name="MySlider" Minimum="0" Maximum="7" Value="{Binding TotalStars, Mode=TwoWay}" ValueChanged="OnSliderValueChanged" Margin="20, 20, 20, 0"/>
             <Label Text="Select Shape" Margin="30, 20, 0, 0"/>
             <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
-                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/circle_filled_vector_maui.xml" Command="{Binding CircleShapeCommand}"/>
-                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/square_unfilled_vector_maui.xml" Command="{Binding SquareShapeCommand}"/>
-                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Resources/Images/star_unfilled_vector_maui.xml" Command="{Binding StarShapeCommamnd}"/>
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Images/circle.png" Command="{Binding CircleShapeCommand}"/>
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="Images/square.png" Command="{Binding SquareShapeCommand}"/>
+                <ImageButton BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="star.png" Command="{Binding StarShapeCommamnd}"/>
             </StackLayout>
-            <CollectionView ItemsSource="{Binding Movies}" WidthRequest="300" Margin="0, 20, 0, 0">
+            <CollectionView ItemsSource="{Binding Movies}" WidthRequest="350"  Margin="0, 20, 0, 0">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="20" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="Gray" Margin="40, 0, 40, 0" WidthRequest="300" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
-                            <Grid BackgroundColor="LightGray"  WidthRequest="300">
-                                <Image Source="{Binding Image}" WidthRequest="300" Aspect="AspectFill"/>
+                        <Frame BorderColor="Gray" Margin="40, 0, 40, 0" WidthRequest="350" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
+                            <Grid BackgroundColor="LightGray"  WidthRequest="350">
+                                <Image Source="{Binding Image}" WidthRequest="350" HeightRequest="500" Aspect="AspectFill"/>
                                 <local:RatingView 
                         Value="{Binding Rating}" 
                         Color="{Binding Color}"
