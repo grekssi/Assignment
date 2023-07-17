@@ -1,47 +1,52 @@
 ﻿<Properties StartupConfiguration="{C88910DE-DA74-4D04-9DCA-2ED7E08FEF5A}|Default">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C0470FDE-40EC-4556-893F-E8858BEA7720" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Movies PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C0470FDE-40EC-4556-893F-E8858BEA7720" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Movies PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C0470FDE-40EC-4556-893F-E8858BEA7720" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Movies/MainPage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Movies/Platforms/iOS/Resources/star_filled_vector.xml">
     <Files>
-      <File FileName="Movies/Platforms/iOS/Adapters/RatingAdapterIOS.cs" Line="130" Column="73" />
-      <File FileName="Movies/Platforms/iOS/Resources/circle_filled_vector.xml" Line="1" Column="81" />
-      <File FileName="Movies/Platforms/iOS/Resources/circle_unfilled_vector.xml" Line="1" Column="157" />
-      <File FileName="Movies/Platforms/iOS/Resources/square_filled_vector.xml" Line="1" Column="113" />
-      <File FileName="Movies/Platforms/iOS/Resources/square_unfilled_vector.xml" Line="1" Column="222" />
-      <File FileName="Movies/Platforms/iOS/Handlers/RatingViewHandleriOS.cs" Line="63" Column="35" />
-      <File FileName="Movies/Platforms/iOS/NativeRatingViewIOS.cs" Line="94" Column="56" />
-      <File FileName="Movies/Platforms/iOS/Resources/star_filled_vector.xml" Line="1" Column="175" />
-      <File FileName="Movies/MauiProgram.cs" Line="6" Column="7" />
-      <File FileName="Movies/MainPage.xaml" Line="35" Column="47" />
-      <File FileName="Movies/Platforms/iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="Movies/Resources/Images/circle_unfilled_vector_maui.xml" Line="12" Column="1" />
+      <File FileName="Movies/Platforms/iOS/Adapters/RatingAdapterIOS.cs" />
+      <File FileName="Movies/Platforms/iOS/Resources/circle_filled_vector.xml" Line="4" Column="1" />
+      <File FileName="Movies/Platforms/iOS/Resources/circle_unfilled_vector.xml" Line="1" Column="64" />
+      <File FileName="Movies/Platforms/iOS/Resources/square_filled_vector.xml" Line="4" Column="1" />
+      <File FileName="Movies/Platforms/iOS/Resources/square_unfilled_vector.xml" Line="3" Column="7" />
+      <File FileName="Movies/Platforms/iOS/NativeRatingViewIOS.cs" />
+      <File FileName="Movies/Platforms/iOS/AppDelegate.cs" />
+      <File FileName="Movies/ViewModels/MoviesViewModel.cs" Line="164" Column="27" />
+      <File FileName="Movies/Platforms/iOS/Resources/star_unfilled_vector.xml" Line="1" Column="64" />
+      <File FileName="Movies/Platforms/iOS/Handlers/RatingViewHandleriOS.cs" />
+      <File FileName="Movies/MainPage.xaml" />
+      <File FileName="Movies/Models/Movie.cs" />
+      <File FileName="Movies/Platforms/iOS/Resources/star_filled_vector.xml" Line="4" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Movies">
-            <Node name="Movies" expanded="True">
+            <Node name="Movies">
               <Node name="Dtos" expanded="True" />
-              <Node name="Platforms" expanded="True">
-                <Node name="iOS" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Platforms">
+                <Node name="iOS">
                   <Node name="Adapters" expanded="True" />
                   <Node name="Handlers" expanded="True" />
-                  <Node name="Resources" expanded="True" />
+                  <Node name="Resources">
+                    <Node name="star_filled_vector.xml" selected="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Resources" expanded="True">
                 <Node name="Images" expanded="True" />
               </Node>
+              <Node name="ViewModels" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C0470FDE-40EC-4556-893F-E8858BEA7720" />
 </Properties>

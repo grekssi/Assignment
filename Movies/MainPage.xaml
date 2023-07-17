@@ -38,7 +38,7 @@
                     <DataTemplate>
                         <Frame BorderColor="Gray" Margin="40, 0, 40, 0" WidthRequest="{Binding ImageWidth}" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
                             <Grid BackgroundColor="LightGray"  WidthRequest="{Binding ImageWidth}">
-                                <Image Source="{Binding Image}" WidthRequest="{Binding ImageWidth}" Aspect="AspectFill"/>
+                                <Image Source="{Binding Image}" HeightRequest="{Binding BindingContext.ImageHeight, Source={x:Reference MainMainPage}}" WidthRequest="{Binding ImageWidth}" Aspect="AspectFill"/>
                                 <local:RatingView 
                         Value="{Binding Rating}" 
                         Color="{Binding Color}"

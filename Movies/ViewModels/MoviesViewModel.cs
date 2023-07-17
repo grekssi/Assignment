@@ -150,7 +150,7 @@ namespace Movies.ViewModels
             {
                 case Device.iOS:
                     ImageWidth = 390;
-                    ImageHeight = 400;
+                    ImageHeight = 500;
                     ImageSourceCircle = "Images/circle.png";
                     ImageSourceSquare = "Images/square.png";
                     ImageSourceStar = "Images/star.png";
