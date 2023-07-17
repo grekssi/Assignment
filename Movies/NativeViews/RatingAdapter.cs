@@ -58,7 +58,7 @@ namespace Movies.NativeViews
             starViewHolder.ChangeSize(StarsSize);
 
             SetupClickHandler(starViewHolder, position);
-            ConfigureStarShape(starViewHolder, position);
+            ConfigureElementShape(starViewHolder, position);
             ConfigureStarColor(starViewHolder, position);
         }
 
@@ -71,7 +71,7 @@ namespace Movies.NativeViews
             };
         }
 
-        private void ConfigureStarShape(StarViewHolder starViewHolder, int position)
+        private void ConfigureElementShape(StarViewHolder starViewHolder, int position)
         {
             int imageResource = GetImageResourceForShapeAndPosition(Shape, position);
             starViewHolder.StarImage.SetImageResource(imageResource);

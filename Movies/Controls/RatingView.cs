@@ -46,10 +46,7 @@ namespace Movies.Controls
         public Shape Shape
         {
             get { return (Shape)GetValue(ShapeProperty); }
-            set 
-            { 
-                SetValue(ShapeProperty, value);
-            }
+            set { SetValue(ShapeProperty, value); }
         }
 
         public double ElementWidth
