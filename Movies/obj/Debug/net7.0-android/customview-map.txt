@@ -1,5 +1,13 @@
 @string/appbar_scrolling_view_behavior;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\155\jl\res\layout\fragment_backstack.xml
 @string/appbar_scrolling_view_behavior;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\155\jl\res\layout\navigationlayout.xml
+{http://www.w3.org/2000/svg}path;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
+{http://www.w3.org/2000/svg}path;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
+{http://www.w3.org/2000/svg}path;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
+{http://www.w3.org/2000/svg}path;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
+{http://www.w3.org/2000/svg}svg;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
+{http://www.w3.org/2000/svg}svg;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
+{http://www.w3.org/2000/svg}svg;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
+{http://www.w3.org/2000/svg}svg;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
 adaptive-icon;obj\Debug\net7.0-android\resizetizer\r\mipmap-anydpi-v26\appicon.xml
 adaptive-icon;obj\Debug\net7.0-android\resizetizer\r\mipmap-anydpi-v26\appicon_round.xml
 alpha;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\152\jl\res\anim\enterfromleft.xml
@@ -49,10 +57,6 @@ layer-list;obj\Debug\net7.0-android\resizetizer\sp\drawable-v31\maui_splash_imag
 microsoft.maui.controls.platform.compatibility.ShellFlyoutLayout;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\152\jl\res\layout\flyoutcontent.xml
 path;obj\Debug\net7.0-android\res\drawable\circle_filled_vector.xml
 path;obj\Debug\net7.0-android\res\drawable\circle_unfilled_vector.xml
-path;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
-path;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
-path;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
-path;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
 path;obj\Debug\net7.0-android\resizetizer\r\drawable\circle_unfilled_vector_maui.xml
 path;obj\Debug\net7.0-android\resizetizer\r\drawable\square_unfilled_vector_maui.xml
 path;obj\Debug\net7.0-android\resizetizer\r\drawable\star_unfilled_vector_maui.xml
@@ -88,10 +92,6 @@ translate;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net
 translate;C:\Users\BedrosGarabedyan\Desktop\Maui\Assignment\Movies\obj\Debug\net7.0-android\lp\155\jl\res\anim\nav_default_pop_exit_anim.xml
 vector;obj\Debug\net7.0-android\res\drawable\circle_filled_vector.xml
 vector;obj\Debug\net7.0-android\res\drawable\circle_unfilled_vector.xml
-vector;obj\Debug\net7.0-android\res\drawable\square_filled_vector.xml
-vector;obj\Debug\net7.0-android\res\drawable\square_unfilled_vector.xml
-vector;obj\Debug\net7.0-android\res\drawable\star_filled_vector.xml
-vector;obj\Debug\net7.0-android\res\drawable\star_unfilled_vector.xml
 vector;obj\Debug\net7.0-android\resizetizer\r\drawable\circle_unfilled_vector_maui.xml
 vector;obj\Debug\net7.0-android\resizetizer\r\drawable\square_unfilled_vector_maui.xml
 vector;obj\Debug\net7.0-android\resizetizer\r\drawable\star_unfilled_vector_maui.xml
