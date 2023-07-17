@@ -6,7 +6,10 @@ obj/Debug/net7.0-android/resizetizer/r/mipmap-hdpi/appicon.png
 obj/Debug/net7.0-android/resizetizer/r/mipmap-hdpi/appicon_background.png
 obj/Debug/net7.0-android/resizetizer/r/drawable/circle_unfilled_vector_maui.xml
 obj/Debug/net7.0-android/resizetizer/r/drawable/star_unfilled_vector_maui.xml
+obj/Debug/net7.0-android/resizetizer/r/drawable/circle.png
 obj/Debug/net7.0-android/resizetizer/r/drawable/square_unfilled_vector_maui.xml
+obj/Debug/net7.0-android/resizetizer/r/drawable/star.png
+obj/Debug/net7.0-android/resizetizer/r/drawable/square.png
 obj/Debug/net7.0-android/resizetizer/r/mipmap-xxxhdpi/appicon_foreground.png
 obj/Debug/net7.0-android/resizetizer/r/mipmap-xxxhdpi/appicon.png
 obj/Debug/net7.0-android/resizetizer/r/mipmap-xxxhdpi/appicon_background.png

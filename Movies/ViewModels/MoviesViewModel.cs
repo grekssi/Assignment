@@ -149,8 +149,8 @@ namespace Movies.ViewModels
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    ImageWidth = 350;
-                    ImageHeight = 500;
+                    ImageWidth = 390;
+                    ImageHeight = 400;
                     ImageSourceCircle = "Images/circle.png";
                     ImageSourceSquare = "Images/square.png";
                     ImageSourceStar = "Images/star.png";
