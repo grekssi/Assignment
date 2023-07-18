@@ -158,6 +158,8 @@ namespace Movies.ViewModels
 
                 case Device.Android:
                     ImageWidth = 420;
+                    ImageHeight = 420;
+
                     ImageSourceCircle = "Resources/Images/circle_unfilled_vector_maui.xml";
                     ImageSourceSquare = "Resources/Images/square_unfilled_vector_maui.xml";
                     ImageSourceStar = "Resources/Images/star_unfilled_vector_maui.xml";
