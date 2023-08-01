@@ -104,7 +104,6 @@ namespace Movies.NativeViews
             }
         }
 
-
         public override int ItemCount => TotalNumberOfStars;
     }
 

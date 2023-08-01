@@ -15,7 +15,6 @@ namespace Movies
         {
             try
             {
-
                 var client = new HttpClient();
 
                 var response = await client.GetAsync("https://assignment-de170-default-rtdb.europe-west1.firebasedatabase.app/movies.json");
@@ -27,7 +26,6 @@ namespace Movies
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }

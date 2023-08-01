@@ -2,14 +2,6 @@
 using CoreGraphics;
 using Microsoft.Maui.Handlers;
 using Movies.Controls;
-using Movies.NativeViews;
-using Movies.Platforms.iOS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UIKit;
 
 namespace Movies.Platforms.iOS.Handlers
 {

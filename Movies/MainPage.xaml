@@ -5,8 +5,10 @@
              x:Name="MainMainPage"
              xmlns:local="clr-namespace:Movies.Controls"
              xmlns:binding="clr-namespace:Movies.ViewModels"
+             xmlns:customItems="clr-namespace:Movies.Components"
              BackgroundColor="DarkGray"
              >
+    
     <ContentPage.BindingContext>
         <binding:MoviesViewModel />
     </ContentPage.BindingContext>
@@ -15,29 +17,72 @@
         <StackLayout>
             <Label Text="Adjust Size" Margin="30, 20, 0, 0"/>
             <Slider Minimum="0" Maximum="40" Value="{Binding ElementWidth, Mode=TwoWay}" Margin="20, 20, 20, 0"/>
+
             <Label Text="Adjust Color" Margin="30, 20, 0, 0"/>
-            <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
-                <Button BackgroundColor="Red" WidthRequest="70" HeightRequest="30" Padding="0" Text="Red" TextColor="White" Command="{Binding RedCommand}"/>
-                <Button BackgroundColor="Blue" WidthRequest="70" HeightRequest="30" Padding="0" Text="Blue" TextColor="White" Command="{Binding BlueCommand}"/>
-                <Button BackgroundColor="Yellow" WidthRequest="70" HeightRequest="30" Padding="0" Text="Yellow" TextColor="Black" Command="{Binding YellowCommand}"/>
-            </StackLayout>
+            <CollectionView
+                Margin="30, 20, 20, 0"
+                ItemsSource="{Binding Colors}"
+                SelectedItem="{Binding SelectedItem}"
+                x:Name="ColorsCollectionView">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="10">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <customItems:ColorElement ElementText="{Binding Text}" ElementColor="{Binding Color}"
+                            WidthRequest="70" HeightRequest="30" Padding="0" Text="Red" TextColor="White"
+                            Command="{Binding BindingContext.SelectedColorCommand, Source={x:Reference Name=ColorsCollectionView}}"
+                            CommandParameter="{Binding .}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <Label Text="Adjust number of elements" Margin="30, 20, 0, 0"/>
             <Slider x:Name="MySlider" Minimum="0" Maximum="7" Value="{Binding TotalStars, Mode=TwoWay}" ValueChanged="OnSliderValueChanged" Margin="20, 20, 20, 0"/>
             <Label Text="Select Shape" Margin="30, 20, 0, 0"/>
-            <StackLayout Orientation="Horizontal" Spacing="10" Margin="30, 20, 20, 0">
-                <ImageButton x:Name="circleButton" BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="{Binding ImageSourceCircle}" Command="{Binding CircleShapeCommand}"/>
-                <ImageButton x:Name="squareButton" BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="{Binding ImageSourceSquare}" Command="{Binding SquareShapeCommand}"/>
-                <ImageButton x:Name="starButton" BackgroundColor="White" CornerRadius="10" WidthRequest="70" HeightRequest="30" Padding="0" Source="{Binding ImageSourceStar}" Command="{Binding StarShapeCommamnd}"/>
-            </StackLayout>
+
+            <CollectionView
+                ItemsSource="{Binding Shapes}"
+                SelectedItem="{Binding SelectedShape}"
+                x:Name="ShapesCollectionView"
+                Margin="30, 20, 20, 0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="10">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <customItems:ShapeElement Shape="{Binding Shape}" Source="{Binding VisualSource}" CornerRadius="10"
+                            WidthRequest="70" HeightRequest="30" Padding="0" BackgroundColor="White"
+                            Command="{Binding BindingContext.SelectedShapeCommand, Source={x:Reference Name=ShapesCollectionView}}"
+                            CommandParameter="{Binding .}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <CollectionView ItemsSource="{Binding Movies}" WidthRequest="{Binding ImageWidth}" Margin="0, 20, 0, 0">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical"
-                           ItemSpacing="20" />
+                    <LinearItemsLayout 
+                        Orientation="Vertical"
+                        ItemSpacing="20" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="Gray" Margin="40, 0, 40, 0" WidthRequest="{Binding ImageWidth}" BackgroundColor="Gray" HasShadow="True" CornerRadius="10">
                             <Grid BackgroundColor="LightGray"  WidthRequest="{Binding ImageWidth}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
                                 <Image Source="{Binding Image}" HeightRequest="{Binding BindingContext.ImageHeight, Source={x:Reference MainMainPage}}" WidthRequest="{Binding ImageWidth}" Aspect="AspectFill"/>
                                 <local:RatingView 
                         Value="{Binding Rating}" 
@@ -49,6 +94,7 @@
                         HorizontalOptions="FillAndExpand" 
                         HeightRequest="50" 
                         BackgroundColor="LightGray"/>
+                                <Label Text="{Binding Rating}" Grid.Row="1"></Label>
                             </Grid>
                         </Frame>
                     </DataTemplate>

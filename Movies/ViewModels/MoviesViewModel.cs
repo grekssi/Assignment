@@ -1,26 +1,18 @@
-﻿using Movies.Controls;
+﻿using Movies.Components;
+using Movies.Controls;
 using Movies.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Movies.ViewModels
 {
     public class MoviesViewModel : INotifyPropertyChanged
     {
-        public ICommand StarShapeCommamnd { get; private set; }
-        public ICommand SquareShapeCommand { get; private set; }
-        public ICommand CircleShapeCommand { get; private set; }
-        public ICommand RedCommand { get; private set; }
-        public ICommand BlueCommand { get; private set; }
-        public ICommand YellowCommand { get; private set; }
-
+        public ICommand SelectedColorCommand { get; private set; }
+        public ICommand SelectedShapeCommand { get; private set; }
 
         private Shape _shape;
         public Shape Shape
@@ -81,7 +73,7 @@ namespace Movies.ViewModels
                 if (_elementWidth != value)
                 {
                     _elementWidth = value;
-                    OnPropertyChanged(nameof(ElementWidth)); 
+                    OnPropertyChanged(nameof(ElementWidth));
                 }
             }
         }
@@ -130,18 +122,75 @@ namespace Movies.ViewModels
             }
         }
 
+        private ObservableCollection<CustomColorButton> _colors;
+        public ObservableCollection<CustomColorButton> Colors
+        {
+            get { return _colors; }
+            set
+            {
+                _colors = value;
+                OnPropertyChanged(nameof(Colors));
+            }
+        }
+
+        private ObservableCollection<CustomShapeButton> _shapes;
+        public ObservableCollection<CustomShapeButton> Shapes
+        {
+            get { return _shapes; }
+            set
+            {
+                _shapes = value;
+                OnPropertyChanged(nameof(Shapes));
+            }
+        }
+
+        private CustomColorButton _selectedColor;
+        public CustomColorButton SelectedColor
+        {
+            get { return _selectedColor; }
+            set
+            {
+                _selectedColor = value;
+                OnPropertyChanged(nameof(SelectedColor));
+            }
+        }
+
+        private CustomColorButton _selectedShape;
+        public CustomColorButton SelectedShape
+        {
+            get { return _selectedShape; }
+            set
+            {
+                _selectedShape = value;
+                OnPropertyChanged(nameof(SelectedShape));
+            }
+        }
+
+
         public MoviesViewModel()
         {
+            Colors = new ObservableCollection<CustomColorButton>
+            {
+                new CustomColorButton{ Color = Color.FromRgb(255,255,0), Text = "Yellow" },
+                new CustomColorButton{ Color = Color.FromRgb(0,0,255), Text = "Blue" },
+                new CustomColorButton{ Color = Color.FromRgb(0,255,0), Text = "Green" },
+                new CustomColorButton{ Color = Color.FromRgb(255,0,0), Text = "Red" },
+                new CustomColorButton{ Color = Color.FromRgb(255, 0, 255), Text = "Magenta" }
+            };
+
+            Shapes = new ObservableCollection<CustomShapeButton>
+            {
+                new CustomShapeButton{ Shape = Shape.Circle, VisualSource="Resources/Images/circle_unfilled_vector_maui.xml" },
+                new CustomShapeButton{ Shape = Shape.Square, VisualSource="Resources/Images/square_unfilled_vector_maui.xml" },
+                new CustomShapeButton{ Shape = Shape.Star, VisualSource="Resources/Images/star_unfilled_vector_maui.xml" }
+            };
+
             SetImageSourceAndDimension();
             Movies = new ObservableCollection<Movie>();
             PullMovies();
 
-            RedCommand = new Command(OnRedClicked);
-            BlueCommand = new Command(OnBlueClicked);
-            YellowCommand = new Command(OnYellowClicked);
-            StarShapeCommamnd = new Command(OnStarShapeClicked);
-            CircleShapeCommand = new Command(OnCircleShapeClicked);
-            SquareShapeCommand = new Command(OnSquareShapeClicked);
+            SelectedColorCommand = new Command<CustomColorButton>(OnColorChanged);
+            SelectedShapeCommand = new Command<CustomShapeButton>(OnShapeChanged);
         }
 
         private void SetImageSourceAndDimension()
@@ -167,43 +216,17 @@ namespace Movies.ViewModels
             }
         }
 
-        private void OnRedClicked()
+        private void OnColorChanged(CustomColorButton button)
         {
             foreach (var movie in Movies)
             {
-                movie.Color = "#FF0000";
+                movie.Color = button.Color.ToHex();
             }
         }
 
-        private void OnBlueClicked()
+        private void OnShapeChanged(CustomShapeButton button)
         {
-            foreach (var movie in Movies)
-            {
-                movie.Color = "#0000FF";
-            }
-        }
-
-        private void OnYellowClicked()
-        {
-            foreach (var movie in Movies)
-            {
-                movie.Color = "#FFFF00";
-            }
-        }
-
-        private void OnCircleShapeClicked()
-        {
-            this.Shape = Shape.Circle;
-        }
-
-        private void OnSquareShapeClicked()
-        {
-            this.Shape = Shape.Square;
-        }
-
-        private void OnStarShapeClicked()
-        {
-            this.Shape = Shape.Star;
+            this.Shape = button.Shape;
         }
 
         public void PullMovies()
